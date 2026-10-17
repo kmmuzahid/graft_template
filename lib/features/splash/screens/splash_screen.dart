@@ -13,7 +13,7 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
-    final splashGraft = context.create(SplashGraft.new)..init();
+    final splashGraft = context.use(SplashGraft.new)..init();
 
     return AppScreenLayout(
       useSafeArea: false,

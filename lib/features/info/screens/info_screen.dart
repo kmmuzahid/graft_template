@@ -2,6 +2,7 @@ import 'package:auto_route/annotations.dart';
 import 'package:core_kit/core_kit_internal.dart';
 import 'package:graft/graft.dart';
 import 'package:graft_template/features/info/graft/info_graft.dart';
+import 'package:graft_template/features/info/model/info_model.dart';
 import 'package:material_ui/material_ui.dart';
 
 @RoutePage()
@@ -11,7 +12,7 @@ class InfoScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final infoGraft = context.create(InfoGraft.new)..getInfo(type);
+    final infoGraft = context.use(InfoGraft.new)..getInfo(type);
 
     return Scaffold(
       backgroundColor: Colors.white,

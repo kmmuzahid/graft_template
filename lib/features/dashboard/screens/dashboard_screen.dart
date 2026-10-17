@@ -13,7 +13,7 @@ class DashboardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
-    final dashboard = context.create(DashboardGraft.new);
+    final dashboard = context.use(DashboardGraft.new);
 
     return AppScreenLayout(
       appBar: CkAppBar(

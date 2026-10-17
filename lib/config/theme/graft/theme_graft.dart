@@ -1,14 +1,9 @@
+
 import 'package:graft/graft.dart';
 import 'package:material_ui/material_ui.dart';
+import 'theme_state.dart';
 
-class ThemeState extends GraftState {
-  ThemeMode mode;
-
-  ThemeState({this.mode = ThemeMode.dark});
-
-  @override
-  GraftProps get props => propsOf(mode);
-}
+export 'theme_state.dart';
 
 class ThemeGraft extends Graft<ThemeState> {
   ThemeGraft() : super(ThemeState());

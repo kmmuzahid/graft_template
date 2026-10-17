@@ -13,8 +13,8 @@ class SecurityScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
-    final security = context.create(SecurityGraft.new);
-    final counter = context.create(LiveCounterGraft.new);
+    final security = context.use(SecurityGraft.new);
+    final counter = context.use(LiveCounterGraft.new);
 
     return AppScreenLayout(
       appBar: const CkAppBar(title: 'Security & Isolation'),

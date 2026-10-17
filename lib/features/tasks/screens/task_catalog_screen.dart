@@ -4,6 +4,7 @@ import 'package:graft/graft.dart';
 import 'package:graft_template/config/color/app_color.dart';
 import 'package:graft_template/features/auth/widgets/app_screen_layout.dart';
 import 'package:graft_template/features/tasks/graft/task_catalog_graft.dart';
+import 'package:graft_template/features/tasks/model/task_model.dart';
 import 'package:material_ui/material_ui.dart';
 
 @RoutePage()
@@ -13,7 +14,7 @@ class TaskCatalogScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
-    final taskCatalog = context.create(TaskCatalogGraft.new);
+    final taskCatalog = context.use(TaskCatalogGraft.new);
 
     return AppScreenLayout(
       appBar: CkAppBar(
@@ -25,7 +26,9 @@ class TaskCatalogScreen extends StatelessWidget {
               child: CkButton(
                 titleText: 'Complete All',
                 buttonRadius: 16.w,
-                buttonColor: colors.ratingPremiumTags_goldAccent.withValues(alpha: 0.2),
+                buttonColor: colors.ratingPremiumTags_goldAccent.withValues(
+                  alpha: 0.2,
+                ),
                 titleColor: colors.ratingPremiumTags_goldAccent,
                 titleSize: 11,
                 titleWeight: FontWeight.w600,
@@ -49,7 +52,11 @@ class TaskCatalogScreen extends StatelessWidget {
               ),
               child: Row(
                 children: [
-                  Icon(Icons.view_list_rounded, color: colors.ratingPremiumTags_goldAccent, size: 28.w),
+                  Icon(
+                    Icons.view_list_rounded,
+                    color: colors.ratingPremiumTags_goldAccent,
+                    size: 28.w,
+                  ),
                   12.width,
                   Expanded(
                     child: Column(
@@ -88,7 +95,9 @@ class TaskCatalogScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12.w),
                     border: Border.all(
                       color: task.isDone
-                          ? colors.ratingPremiumTags_goldAccent.withValues(alpha: 0.3)
+                          ? colors.ratingPremiumTags_goldAccent.withValues(
+                              alpha: 0.3,
+                            )
                           : colors.bACKGROUND_darkCardBoarder,
                     ),
                   ),
@@ -110,11 +119,16 @@ class TaskCatalogScreen extends StatelessWidget {
                               text: task.title,
                               fontSize: 13,
                               fontWeight: FontWeight.w600,
-                              textColor: task.isDone ? colors.tEXT_subDark : colors.tEXT_white,
+                              textColor: task.isDone
+                                  ? colors.tEXT_subDark
+                                  : colors.tEXT_white,
                             ),
                             4.height,
                             Container(
-                              padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 2.h),
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 8.w,
+                                vertical: 2.h,
+                              ),
                               decoration: BoxDecoration(
                                 color: Colors.white10,
                                 borderRadius: BorderRadius.circular(6.w),

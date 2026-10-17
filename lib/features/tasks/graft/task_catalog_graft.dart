@@ -1,36 +1,7 @@
 import 'package:graft/graft.dart';
+import 'task_catalog_state.dart';
 
-class TaskItem {
-  final String id;
-  final String title;
-  final String category;
-  final bool isDone;
-
-  const TaskItem({
-    required this.id,
-    required this.title,
-    required this.category,
-    this.isDone = false,
-  });
-
-  TaskItem copyWith({bool? isDone}) {
-    return TaskItem(
-      id: id,
-      title: title,
-      category: category,
-      isDone: isDone ?? this.isDone,
-    );
-  }
-}
-
-class TaskCatalogState extends GraftState {
-  List<TaskItem> tasks;
-
-  TaskCatalogState({required this.tasks});
-
-  @override
-  GraftProps get props => propsOf(tasks);
-}
+export 'task_catalog_state.dart';
 
 class TaskCatalogGraft extends Graft<TaskCatalogState> {
   TaskCatalogGraft()

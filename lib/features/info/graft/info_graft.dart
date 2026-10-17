@@ -1,18 +1,9 @@
 import 'package:get_it/get_it.dart';
 import 'package:graft/graft.dart';
 import 'package:graft_template/features/info/repository/info_repository.dart';
+import 'info_state.dart';
 
-enum InfoType { privacyPolicy, termsAndConditions }
-
-class InfoState extends GraftState {
-  bool isLoading;
-  String content;
-
-  InfoState({this.isLoading = false, this.content = ''});
-
-  @override
-  GraftProps get props => propsOf(isLoading, content);
-}
+export 'info_state.dart';
 
 class InfoGraft extends Graft<InfoState> {
   InfoGraft() : super(InfoState());
