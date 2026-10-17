@@ -4,7 +4,7 @@
  * @Email: km.muzahid@gmail.com
  */
 
-import 'package:cubit_template/features/info/repository/info_repository.dart';
+import 'package:graft_template/features/info/repository/info_repository.dart';
 import 'package:get_it/get_it.dart';
 
 class RealRepositoryDependency {

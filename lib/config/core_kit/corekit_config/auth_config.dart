@@ -6,9 +6,9 @@ import 'package:core_kit/auth/otp/otp_config.dart';
 import 'package:core_kit/dialog/ck_dialog.dart';
 import 'package:core_kit/initializer.dart';
 import 'package:core_kit/utils/ck_logger.dart';
-import 'package:cubit_template/config/route/app_router.dart';
-import 'package:cubit_template/config/route/app_router.gr.dart';
-import 'package:cubit_template/features/auth/widgets/otp_dialog.dart'; 
+import 'package:graft_template/config/route/app_router.dart';
+import 'package:graft_template/config/route/app_router.gr.dart';
+import 'package:graft_template/features/auth/widgets/otp_dialog.dart'; 
 mixin AuthConfig on CoreKitConfig {
   @override
   CkAuthConfig get authConfig => CkAuthConfig(

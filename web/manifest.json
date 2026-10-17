@@ -1,6 +1,6 @@
 {
-    "name": "cubit_template",
-    "short_name": "cubit_template",
+    "name": "graft_template",
+    "short_name": "graft_template",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

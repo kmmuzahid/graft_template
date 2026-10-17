@@ -1,12 +1,12 @@
 import 'package:auto_route/annotations.dart';
 import 'package:core_kit/core_kit_internal.dart';
-import 'package:cubit_template/config/color/app_color.dart';
-import 'package:cubit_template/config/route/app_router.dart';
-import 'package:cubit_template/config/route/app_router.gr.dart';
-import 'package:cubit_template/config/core_kit/core_kit_config.dart';
-import 'package:cubit_template/features/auth/entity/auth_entity.dart';
-import 'package:cubit_template/features/auth/widgets/app_screen_layout.dart';
-import 'package:cubit_template/features/auth/widgets/forget_password_dialog.dart'; 
+import 'package:graft_template/config/color/app_color.dart';
+import 'package:graft_template/config/route/app_router.dart';
+import 'package:graft_template/config/route/app_router.gr.dart';
+import 'package:graft_template/config/core_kit/core_kit_config.dart';
+import 'package:graft_template/features/auth/entity/auth_entity.dart';
+import 'package:graft_template/features/auth/widgets/app_screen_layout.dart';
+import 'package:graft_template/features/auth/widgets/forget_password_dialog.dart'; 
 import 'package:material_ui/material_ui.dart';
 
 @RoutePage()
@@ -135,7 +135,7 @@ class LoginScreen extends StatelessWidget {
                             onTap: () {
                               if (formKey.validateAndSave()) {
                                 ckAuth.signIn(
-                                  username: entity.username ?? '',
+                                  account: entity.username ?? '',
                                   password: entity.password ?? '',
                                 );
                               }

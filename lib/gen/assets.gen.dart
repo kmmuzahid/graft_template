@@ -9,6 +9,29 @@
 // ignore_for_file: type=lint
 // ignore_for_file: deprecated_member_use,directives_ordering,implicit_dynamic_list_literal,unnecessary_import
 
+class $AssetsIconGen {
+  const $AssetsIconGen();
+
+  /// File path: assets/icon/.gitkeep
+  String get aGitkeep => 'assets/icon/.gitkeep';
+
+  /// List of all assets
+  List<String> get values => [aGitkeep];
+}
+
+class $AssetsImagesGen {
+  const $AssetsImagesGen();
+
+  /// File path: assets/images/.gitkeep
+  String get aGitkeep => 'assets/images/.gitkeep';
+
+  /// List of all assets
+  List<String> get values => [aGitkeep];
+}
+
 class Assets {
   const Assets._();
+
+  static const $AssetsIconGen icon = $AssetsIconGen();
+  static const $AssetsImagesGen images = $AssetsImagesGen();
 }

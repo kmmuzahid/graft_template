@@ -1,4 +1,4 @@
-package com.example.cubit_template
+package com.example.graft_template
 
 import io.flutter.embedding.android.FlutterActivity
 

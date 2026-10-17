@@ -1,8 +1,9 @@
-import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:core_kit/core_kit_internal.dart';
-import 'package:cubit_template/config/color/app_color.dart';
-import 'package:cubit_template/config/core_kit/core_kit_config.dart';
-import 'package:cubit_template/features/auth/widgets/app_screen_layout.dart'; 
+import 'package:graft_template/config/color/app_color.dart';
+import 'package:graft_template/config/core_kit/core_kit_config.dart';
+import 'package:graft_template/config/route/app_router.gr.dart';
+import 'package:graft_template/features/auth/widgets/app_screen_layout.dart';
 import 'package:material_ui/material_ui.dart';
 
 @RoutePage()
@@ -72,7 +73,7 @@ class HomeScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           CkText(
-                            text: 'Welcome back,',
+                            text: 'Graft State Management',
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
                             textColor: colors.tEXT_subDark,
@@ -80,9 +81,7 @@ class HomeScreen extends StatelessWidget {
                           ),
                           4.height,
                           CkText(
-                            text: ckAuth.profile != null
-                                ? 'Active Session'
-                                : 'Guest User',
+                            text: 'Feature Showcase 🌱',
                             fontSize: 18,
                             fontWeight: FontWeight.w700,
                             textColor: colors.tEXT_white,
@@ -97,7 +96,7 @@ class HomeScreen extends StatelessWidget {
                 Divider(color: colors.bACKGROUND_darkCardBoarder, height: 1),
                 16.height,
                 CkText(
-                  text: 'Profile Information:',
+                  text: 'Explore Core Graft Superpowers:',
                   fontSize: 12,
                   fontWeight: FontWeight.w600,
                   textColor: colors.ratingPremiumTags_goldAccent,
@@ -105,13 +104,12 @@ class HomeScreen extends StatelessWidget {
                 ),
                 8.height,
                 CkText(
-                  text: '${ckAuth.profile}',
+                  text:
+                      'Tap any showcase card below to see selective micro-rebuilds, lazy virtualized builders, multi-child slot diffing, and cross-graft isolation.',
                   fontSize: 13,
                   fontWeight: FontWeight.w400,
                   textColor: colors.tEXT_subDark,
                   textAlign: TextAlign.left,
-                  maxLines: 3,
-                  overflow: TextOverflow.ellipsis,
                 ),
               ],
             ),
@@ -119,7 +117,7 @@ class HomeScreen extends StatelessWidget {
           20.height,
           // Quick actions header
           CkText(
-            text: 'Quick Actions',
+            text: 'Graft Showcase Screens',
             fontSize: 16,
             fontWeight: FontWeight.w700,
             textColor: colors.tEXT_white,
@@ -137,25 +135,29 @@ class HomeScreen extends StatelessWidget {
                   context,
                   icon: Icons.dashboard_outlined,
                   title: 'Dashboard',
-                  subtitle: 'View analytics',
+                  subtitle: 'graft.compute & metrics',
+                  onTap: () => context.router.push(const DashboardRoute()),
+                ),
+                _buildActionCard(
+                  context,
+                  icon: Icons.view_list_rounded,
+                  title: 'Task Catalog',
+                  subtitle: 'Virtualized graft.builder',
+                  onTap: () => context.router.push(const TaskCatalogRoute()),
                 ),
                 _buildActionCard(
                   context,
                   icon: Icons.settings_outlined,
                   title: 'Settings',
-                  subtitle: 'Preferences',
-                ),
-                _buildActionCard(
-                  context,
-                  icon: Icons.notifications_none_outlined,
-                  title: 'Alerts',
-                  subtitle: 'Notifications',
+                  subtitle: 'graft.slots & profile',
+                  onTap: () => context.router.push(const SettingsRoute()),
                 ),
                 _buildActionCard(
                   context,
                   icon: Icons.shield_outlined,
                   title: 'Security',
-                  subtitle: 'Manage keys',
+                  subtitle: 'Cross-Graft isolation',
+                  onTap: () => context.router.push(const SecurityRoute()),
                 ),
               ],
             ),
@@ -170,40 +172,45 @@ class HomeScreen extends StatelessWidget {
     required IconData icon,
     required String title,
     required String subtitle,
+    required VoidCallback onTap,
   }) {
     final colors = context.colors;
-    return Container(
-      padding: EdgeInsets.all(16.w),
-      decoration: BoxDecoration(
-        color: colors.bACKGROUND_darkCard,
-        borderRadius: BorderRadius.circular(12.w),
-        border: Border.all(
-          color: colors.bACKGROUND_darkCardBoarder,
-          width: 1.5,
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(12.w),
+      child: Container(
+        padding: EdgeInsets.all(16.w),
+        decoration: BoxDecoration(
+          color: colors.bACKGROUND_darkCard,
+          borderRadius: BorderRadius.circular(12.w),
+          border: Border.all(
+            color: colors.bACKGROUND_darkCardBoarder,
+            width: 1.5,
+          ),
         ),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(icon, color: colors.ratingPremiumTags_goldAccent, size: 28.w),
-          12.height,
-          CkText(
-            text: title,
-            fontSize: 14,
-            fontWeight: FontWeight.w600,
-            textColor: colors.tEXT_white,
-            textAlign: TextAlign.left,
-          ),
-          4.height,
-          CkText(
-            text: subtitle,
-            fontSize: 11,
-            fontWeight: FontWeight.w400,
-            textColor: colors.tEXT_subDark,
-            textAlign: TextAlign.left,
-          ),
-        ],
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(icon, color: colors.ratingPremiumTags_goldAccent, size: 28.w),
+            12.height,
+            CkText(
+              text: title,
+              fontSize: 14,
+              fontWeight: FontWeight.w600,
+              textColor: colors.tEXT_white,
+              textAlign: TextAlign.left,
+            ),
+            4.height,
+            CkText(
+              text: subtitle,
+              fontSize: 11,
+              fontWeight: FontWeight.w400,
+              textColor: colors.tEXT_subDark,
+              textAlign: TextAlign.left,
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -1,16 +1,16 @@
 import 'dart:ui';
 
 import 'package:core_kit/core_kit.dart';
-import 'package:cubit_template/config/api/api_end_point.dart';
-import 'package:cubit_template/config/core_kit/corekit_config/appbar_config.dart';
-import 'package:cubit_template/config/core_kit/corekit_config/auth_config.dart';
-import 'package:cubit_template/config/core_kit/corekit_config/input_config.dart';
-import 'package:cubit_template/config/core_kit/corekit_config/list_loader_config.dart';
-import 'package:cubit_template/config/core_kit/corekit_config/password_obscure_icon_config.dart';
-import 'package:cubit_template/config/core_kit/corekit_config/permission_config.dart';
-import 'package:cubit_template/config/core_kit/corekit_config/snackbar_config.dart';
-import 'package:cubit_template/config/core_kit/corekit_config/transport_config.dart';
-import 'package:cubit_template/features/auth/model/profile_model.dart';
+import 'package:graft_template/config/api/api_end_point.dart';
+import 'package:graft_template/config/core_kit/corekit_config/appbar_config.dart';
+import 'package:graft_template/config/core_kit/corekit_config/auth_config.dart';
+import 'package:graft_template/config/core_kit/corekit_config/input_config.dart';
+import 'package:graft_template/config/core_kit/corekit_config/list_loader_config.dart';
+import 'package:graft_template/config/core_kit/corekit_config/password_obscure_icon_config.dart';
+import 'package:graft_template/config/core_kit/corekit_config/permission_config.dart';
+import 'package:graft_template/config/core_kit/corekit_config/snackbar_config.dart';
+import 'package:graft_template/config/core_kit/corekit_config/transport_config.dart';
+import 'package:graft_template/features/auth/model/profile_model.dart';
 
 CkAuth<ProfileModel> ckAuth = CkAuth();
 

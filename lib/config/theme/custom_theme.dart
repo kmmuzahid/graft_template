@@ -3,7 +3,7 @@
  * @Date: 2026-02-02 17:29:30
  * @Email: km.muzahid@gmail.com
  */
-import 'package:cubit_template/config/color/app_color.dart';
+import 'package:graft_template/config/color/app_color.dart';
 import 'package:material_ui/material_ui.dart';
 
 String fontFamily = 'Inter';

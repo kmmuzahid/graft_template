@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "cubit_template" "\0"
+            VALUE "FileDescription", "graft_template" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "cubit_template" "\0"
+            VALUE "InternalName", "graft_template" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2026 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "cubit_template.exe" "\0"
-            VALUE "ProductName", "cubit_template" "\0"
+            VALUE "OriginalFilename", "graft_template.exe" "\0"
+            VALUE "ProductName", "graft_template" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END
