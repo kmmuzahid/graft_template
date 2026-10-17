@@ -115,3 +115,4 @@ CubitScope<SplashCubit, bool>(
 - **Theme Extensibility**: Access project colors directly using `context.colors` (extends context with active theme colors, e.g. `context.colors.background`).
 - **Responsive Layouts**: Use `.w` (width), `.h` (height), `.sp` (font size), `.r` (radius) on standard Flutter containers.
 - **Core Widgets**: Prefer standard `Ck` prefixed UI components (`CkText`, `CkButton`, `CkTextField`) to ensure cohesive design tokens, fonts, and styles.
+# graft_template
