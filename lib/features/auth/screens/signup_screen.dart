@@ -1,11 +1,13 @@
 import 'package:auto_route/annotations.dart';
 import 'package:core_kit/core_kit_internal.dart';
+import 'package:graft/graft.dart';
 import 'package:graft_template/config/color/app_color.dart';
 import 'package:graft_template/config/core_kit/core_kit_config.dart';
 import 'package:graft_template/config/route/app_router.dart';
 import 'package:graft_template/config/route/app_router.gr.dart';
 import 'package:graft_template/features/auth/entity/signup_entity.dart';
-import 'package:graft_template/features/auth/widgets/app_screen_layout.dart'; 
+import 'package:graft_template/features/auth/graft/signup_graft.dart';
+import 'package:graft_template/features/auth/widgets/app_screen_layout.dart';
 import 'package:graft_template/features/info/graft/info_graft.dart';
 import 'package:material_ui/material_ui.dart';
 
@@ -15,13 +17,27 @@ class SignUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // 🎯 Resolve or instantiate SignUpGraft from AppScope.signup
+    final signupGraft = context.use(SignUpGraft.new);
     final colors = context.colors;
 
     return AppScreenLayout(
       appBar: const CkAppBar(title: 'Create Account'),
       body: SingleChildScrollView(
         child: CkFormBuilder(
-          entity: SignUpEntity(),
+          entity: SignUpEntity()
+            ..username = signupGraft.state.username.isNotEmpty
+                ? signupGraft.state.username
+                : null
+            ..email = signupGraft.state.email.isNotEmpty
+                ? signupGraft.state.email
+                : null
+            ..phoneNumber = signupGraft.state.phoneNumber.isNotEmpty
+                ? signupGraft.state.phoneNumber
+                : null
+            ..dateOfBirth = signupGraft.state.dateOfBirth.isNotEmpty
+                ? DateTime.tryParse(signupGraft.state.dateOfBirth)
+                : null,
           builder: (_, formKey, entity) {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -37,7 +53,8 @@ class SignUpScreen extends StatelessWidget {
                 ),
                 8.height,
                 CkText(
-                  text: 'Create a new account using our production-ready CoreKit modules.',
+                  text:
+                      'Create a new account using our production-ready CoreKit modules.',
                   fontSize: 14,
                   fontWeight: FontWeight.w400,
                   textColor: colors.tEXT_subDark,
@@ -76,6 +93,9 @@ class SignUpScreen extends StatelessWidget {
                       ),
                       8.height,
                       CkTextField(
+                        initialText: signupGraft.state.username.isNotEmpty
+                            ? signupGraft.state.username
+                            : null,
                         hintText: 'Choose a username',
                         validationType: CkValidationType.validateUsername,
                         prefixIcon: Icon(
@@ -83,7 +103,12 @@ class SignUpScreen extends StatelessWidget {
                           color: colors.tEXT_subDark,
                           size: 20.w,
                         ),
-                        onSaved: (value, controller) => entity.username = value,
+                        onChanged: (value) =>
+                            signupGraft.updateField(username: value),
+                        onSaved: (value, controller) {
+                          entity.username = value;
+                          signupGraft.updateField(username: value);
+                        },
                       ),
                       16.height,
 
@@ -97,6 +122,9 @@ class SignUpScreen extends StatelessWidget {
                       ),
                       8.height,
                       CkTextField(
+                        initialText: signupGraft.state.email.isNotEmpty
+                            ? signupGraft.state.email
+                            : null,
                         hintText: 'Enter your email',
                         validationType: CkValidationType.validateEmail,
                         prefixIcon: Icon(
@@ -104,7 +132,12 @@ class SignUpScreen extends StatelessWidget {
                           color: colors.tEXT_subDark,
                           size: 20.w,
                         ),
-                        onSaved: (value, controller) => entity.email = value,
+                        onChanged: (value) =>
+                            signupGraft.updateField(email: value),
+                        onSaved: (value, controller) {
+                          entity.email = value;
+                          signupGraft.updateField(email: value);
+                        },
                       ),
                       16.height,
 
@@ -120,10 +153,15 @@ class SignUpScreen extends StatelessWidget {
                       CkTextField(
                         hintText: 'Create a password',
                         validationType: CkValidationType.validatePassword,
-                        onChanged: (value) => entity.password = value,
+                        prefixIcon: Icon(
+                          Icons.lock_outline,
+                          color: colors.tEXT_subDark,
+                          size: 20.w,
+                        ),
+                        onSaved: (value, controller) => entity.password = value,
                       ),
                       16.height,
-                      // Password Field
+                      // Confirm Password Field
                       CkText(
                         text: 'Confirm Password',
                         fontSize: 14,
@@ -150,14 +188,22 @@ class SignUpScreen extends StatelessWidget {
                       ),
                       8.height,
                       CkPhoneNumberTextField(
+                        initialPhoneNumber:
+                            signupGraft.state.phoneNumber.isNotEmpty
+                                ? signupGraft.state.phoneNumber
+                                : null,
                         textInputAction: TextInputAction.next,
                         borderColor: colors.bACKGROUND_darkCardBoarder,
                         initalCountryCode: 'US',
                         countryChange: (phone) {
                           entity.phoneNumber = phone.completeNumber;
+                          signupGraft.updateField(
+                              phoneNumber: phone.completeNumber);
                         },
                         onChanged: (phone) {
                           entity.phoneNumber = phone.completeNumber;
+                          signupGraft.updateField(
+                              phoneNumber: phone.completeNumber);
                         },
                       ),
                       16.height,
@@ -172,6 +218,10 @@ class SignUpScreen extends StatelessWidget {
                       ),
                       8.height,
                       CkDateInputTextField(
+                        initialValue:
+                            signupGraft.state.dateOfBirth.isNotEmpty
+                                ? signupGraft.state.dateOfBirth
+                                : null,
                         hints: 'Select your birthday',
                         prefixIcon: Icon(
                           Icons.calendar_today_outlined,
@@ -180,6 +230,8 @@ class SignUpScreen extends StatelessWidget {
                         ),
                         onChanged: (date) {
                           entity.dateOfBirth = date;
+                          signupGraft.updateField(
+                              dateOfBirth: date?.toIso8601String());
                         },
                       ),
                       24.height,
@@ -197,6 +249,14 @@ class SignUpScreen extends StatelessWidget {
                             titleColor: colors.bACKGROUND_darkPage,
                             onTap: () {
                               if (formKey.validateAndSave()) {
+                                signupGraft.updateField(
+                                  username: entity.username,
+                                  email: entity.email,
+                                  phoneNumber: entity.phoneNumber,
+                                  dateOfBirth:
+                                      entity.dateOfBirth?.toIso8601String(),
+                                );
+
                                 ckAuth.signUp(
                                   body: {
                                     'username': entity.username ?? '',
@@ -207,14 +267,14 @@ class SignUpScreen extends StatelessWidget {
                                         entity.dateOfBirth?.toIso8601String() ??
                                         '',
                                   },
-                                  //assume backend is not send access token and refresh token on signup, send it after login api call
-                                  // this will call login api after signup api call
-                                  // and store access token and refresh token
                                   loginCallback: LoginCallback(
                                     account: entity.email ?? '',
                                     password: entity.password ?? '',
                                   ),
                                 );
+
+                                // 🧹 Clean up draft and drop scope upon successful registration:
+                                signupGraft.onSignUpSuccess();
                               }
                             },
                           );
@@ -296,8 +356,6 @@ class SignUpScreen extends StatelessWidget {
                   ),
                 ),
                 30.height,
-
-                // Info links section
               ],
             );
           },

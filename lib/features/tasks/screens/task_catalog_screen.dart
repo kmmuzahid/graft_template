@@ -4,7 +4,6 @@ import 'package:graft/graft.dart';
 import 'package:graft_template/config/color/app_color.dart';
 import 'package:graft_template/features/auth/widgets/app_screen_layout.dart';
 import 'package:graft_template/features/tasks/graft/task_catalog_graft.dart';
-import 'package:graft_template/features/tasks/model/task_model.dart';
 import 'package:material_ui/material_ui.dart';
 
 @RoutePage()

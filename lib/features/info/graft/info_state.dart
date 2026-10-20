@@ -1,5 +1,4 @@
 import 'package:graft/graft.dart';
-import 'package:graft_template/features/info/model/info_model.dart';
 
 export 'package:graft_template/features/info/model/info_model.dart';
 

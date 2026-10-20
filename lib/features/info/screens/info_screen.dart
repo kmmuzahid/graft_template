@@ -2,7 +2,6 @@ import 'package:auto_route/annotations.dart';
 import 'package:core_kit/core_kit_internal.dart';
 import 'package:graft/graft.dart';
 import 'package:graft_template/features/info/graft/info_graft.dart';
-import 'package:graft_template/features/info/model/info_model.dart';
 import 'package:material_ui/material_ui.dart';
 
 @RoutePage()

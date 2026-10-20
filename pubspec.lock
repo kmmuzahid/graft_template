@@ -725,14 +725,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.15.7"
-  get_it:
-    dependency: "direct main"
-    description:
-      name: get_it
-      sha256: "568d62f0e68666fb5d95519743b3c24a34c7f19d834b0658c46e26d778461f66"
-      url: "https://pub.dev"
-    source: hosted
-    version: "9.2.1"
   glob:
     dependency: transitive
     description:
@@ -744,18 +736,16 @@ packages:
   graft:
     dependency: "direct main"
     description:
-      name: graft
-      sha256: "7252aeb64483a0d28bb36fefa58f5667222328b3441a068b4dfd45e8094a2a31"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.1.2-alpha.5"
+      path: "../graft"
+      relative: true
+    source: path
+    version: "1.0.0-alpha.2"
   graft_lint:
     dependency: "direct dev"
     description:
-      name: graft_lint
-      sha256: e858a681874ce3f1142aa059d12372a42a97fbb7bb61c829103a4e3547c005de
-      url: "https://pub.dev"
-    source: hosted
+      path: "../graft/packages/graft_lint"
+      relative: true
+    source: path
     version: "0.1.2-alpha.5"
   graphs:
     dependency: transitive
@@ -1342,7 +1332,7 @@ packages:
     source: hosted
     version: "7.2.0"
   shared_preferences:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: shared_preferences
       sha256: c3025c5534b01739267eb7d76959bbc25a6d10f6988e1c2a3036940133dd10bf

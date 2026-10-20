@@ -1,4 +1,3 @@
-import 'package:get_it/get_it.dart';
 import 'package:graft/graft.dart';
 import 'package:graft_template/features/info/repository/info_repository.dart';
 import 'info_state.dart';
@@ -13,7 +12,7 @@ class InfoGraft extends Graft<InfoState> {
       ..isLoading = true
       ..update();
 
-    final repo = GetIt.I<InfoRepository>();
+    final repo = use<InfoRepository>();
     final result = type == InfoType.privacyPolicy
         ? await repo.getPrivacyPolicy()
         : await repo.getTermsAndConditions();
