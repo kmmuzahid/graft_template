@@ -1,12 +1,13 @@
 import 'package:graft/graft.dart';
-import 'package:graft_template/config/dependency/app_scope.dart';
+import 'package:graft_template/config/dependency/dependency_injection.dart';
 import 'signup_state.dart';
 
 export 'signup_state.dart';
 
 /// Business logic controller for user registration.
 ///
-/// Registered under [AppScope.signup] with Frame-0 dry persistence.
+/// Managed under [AppScope.signup] with Frame-0 dry persistence.
+/// Controllers auto-dispose automatically when the screen unmounts.
 class SignUpGraft extends Graft<SignUpState> {
   SignUpGraft() : super.dry(SignUpState.new);
 
@@ -31,12 +32,9 @@ class SignUpGraft extends Graft<SignUpState> {
       ..update();
   }
 
-  /// Purges persisted draft data and drops the [AppScope.signup] scope upon completion.
+  /// Purges persisted draft data using the signup scope upon successful registration.
+  /// (The scope itself auto-disposes controllers when the route unmounts).
   void onSignUpSuccess() {
-    // 1. Invalidate Frame-0 persisted storage (clears draft from SharedPreferences)
-    invalidateDry();
-
-    // 2. Drop the signup scope and dispose scoped controllers
-    AppScope.signup.drop();
+    AppScope.signup.invalidateDry();
   }
 }

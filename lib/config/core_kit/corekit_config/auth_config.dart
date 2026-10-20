@@ -7,7 +7,7 @@ import 'package:core_kit/dialog/ck_dialog.dart';
 import 'package:core_kit/initializer.dart';
 import 'package:core_kit/utils/ck_logger.dart';
 import 'package:graft/graft.dart';
-import 'package:graft_template/config/dependency/app_scope.dart';
+import 'package:graft_template/config/dependency/dependency_injection.dart';
 import 'package:graft_template/config/route/app_router.dart';
 import 'package:graft_template/config/route/app_router.gr.dart';
 import 'package:graft_template/features/auth/widgets/otp_dialog.dart'; 
@@ -82,8 +82,8 @@ mixin AuthConfig on CoreKitConfig {
       },
       onAuthenticated: () {
         ckApiDebug('authenticated');
-        // Clean up signup scope upon successful authentication
-        AppScope.signup.drop();
+        // Purge signup draft state upon authentication
+        AppScope.signup.invalidateDry();
         appRouter.replaceAll([HomeRoute()]);
       },
       showLogin: () {

@@ -47,14 +47,13 @@ In this template, **dry state persistence is used selectively** for the account 
 1. **Persistent Draft**: When a user inputs their username, email, phone number, and birth date on the sign-up page, the fields are persisted via `onDry()`. If the user leaves the app or visits Terms & Conditions, their form data is restored on Frame 0 with **zero blank frames**.
 2. **Transient Isolation**: Sensitive fields (like passwords) and transient states (like `isLoading`) are omitted from `onDry()`.
 3. **Automatic Cleanup on Success**: Once the user successfully signs up or authenticates, `signupGraft.onSignUpSuccess()` is called:
-   - Purges the draft from storage via `invalidateDry()`.
-   - Cleans up and tears down the entire scope via `AppScope.signup.drop()`.
+   - Purges the draft from storage via `AppScope.signup.invalidateDry()`.
+   - The signup scope and its controllers auto-dispose automatically when the screen unmounts.
 
 ```dart
 // Flow completion in SignUpGraft:
 void onSignUpSuccess() {
-  invalidateDry();        // 1. Clears draft from persistent storage
-  AppScope.signup.drop(); // 2. Drops scope and disposes scoped controllers
+  AppScope.signup.invalidateDry(); // Purges draft from persistent storage
 }
 ```
 
@@ -62,7 +61,7 @@ void onSignUpSuccess() {
 
 ## 💉 Dependency Injection with Graft DI
 
-Dependencies are registered in `lib/config/dependency/dependency_binder.dart` with zero service-locator boilerplate:
+Dependencies are registered in `lib/config/dependency/dependency_injection.dart` with zero service-locator boilerplate:
 
 ```dart
 // 1. Singletons (Global services & controllers)

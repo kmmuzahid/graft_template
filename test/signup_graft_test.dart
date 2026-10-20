@@ -1,21 +1,20 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:graft/graft.dart';
-import 'package:graft_template/config/dependency/app_scope.dart';
-import 'package:graft_template/config/dependency/dependency_binder.dart';
+import 'package:graft_template/config/dependency/dependency_injection.dart';
 import 'package:graft_template/features/auth/graft/signup_graft.dart';
 
 void main() {
   setUp(() {
     configurePersistence(MemoryStateConfig());
     GraftDI.reset();
-    DependencyBinder.initialize();
+    configureDependencies();
   });
 
   tearDown(() {
     GraftDI.reset();
   });
 
-  test('SignUpGraft dry state persists fields and cleans scope on success', () {
+  test('SignUpGraft dry state persists fields and invalidates via AppScope.signup', () {
     // 1. Instantiate SignUpGraft
     final graft = SignUpGraft();
 
@@ -32,10 +31,7 @@ void main() {
     expect(graft.state.phoneNumber, equals('+1234567890'));
     expect(graft.state.dateOfBirth, equals('1995-05-15'));
 
-    // 3. Complete signup -> invalidates dry state & drops scope cleanly
+    // 3. Complete signup -> invalidates dry state via AppScope.signup
     graft.onSignUpSuccess();
-
-    // Verify scope can drop without errors
-    AppScope.signup.drop();
   });
 }

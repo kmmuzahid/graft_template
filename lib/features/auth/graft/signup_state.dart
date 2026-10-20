@@ -11,6 +11,11 @@ class SignUpState extends GraftState {
   String dateOfBirth = '';
   bool isLoading = false;
 
+  /// Prefix key matching [AppScope.signup] so [AppScope.signup.invalidateDry()]
+  /// purges this draft state upon successful account creation.
+  @override
+  String get dryKey => 'signup_draft';
+
   /// Persists draft registration fields across app restarts.
   /// Transient [isLoading] is omitted to always start fresh.
   @override

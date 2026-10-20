@@ -26,11 +26,6 @@ Future<void> init() async {
   final prefs = await SharedPreferences.getInstance();
   configurePersistence(SharedPrefsStateConfig(prefs));
 
-  // Initialize Graft DI singletons, scopes, and services
-  _diInit();
-}
-
-void _diInit() {
-  final dI = DependencyInjection();
-  dI.dependencies();
+  // Initialize Graft DI singletons, scopes, and controller factories
+  configureDependencies();
 }
