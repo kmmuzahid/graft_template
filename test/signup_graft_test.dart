@@ -31,7 +31,14 @@ void main() {
     expect(graft.state.phoneNumber, equals('+1234567890'));
     expect(graft.state.dateOfBirth, equals('1995-05-15'));
 
+    // Test restoration across graft recreation (simulating screen unmount/remount or app restart)
+    final graft2 = SignUpGraft();
+    expect(graft2.state.username, equals('alice_dev'));
+    expect(graft2.state.email, equals('alice@example.com'));
+    expect(graft2.state.phoneNumber, equals('+1234567890'));
+    expect(graft2.state.dateOfBirth, equals('1995-05-15'));
+
     // 3. Complete signup -> invalidates dry state via AppScope.signup
-    graft.onSignUpSuccess();
+    graft2.onSignUpSuccess();
   });
 }

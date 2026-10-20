@@ -1,5 +1,6 @@
 import 'package:graft/graft.dart';
 import 'package:graft_template/config/dependency/dependency_injection.dart';
+
 import 'signup_state.dart';
 
 export 'signup_state.dart';
@@ -9,9 +10,8 @@ export 'signup_state.dart';
 /// Managed under [AppScope.signup] with Frame-0 dry persistence.
 /// Controllers auto-dispose automatically when the screen unmounts.
 class SignUpGraft extends Graft<SignUpState> {
-  SignUpGraft() : super.dry(SignUpState.new);
+  SignUpGraft() : super(SignUpState());
 
-  /// Synchronously updates registration fields and triggers surgical slot diffing.
   void updateField({
     String? username,
     String? email,

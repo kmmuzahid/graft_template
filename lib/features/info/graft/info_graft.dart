@@ -7,7 +7,12 @@ export 'info_state.dart';
 class InfoGraft extends Graft<InfoState> {
   InfoGraft() : super(InfoState());
 
+  InfoType? _lastLoaded;
+
   Future<void> getInfo(InfoType type) async {
+    if (_lastLoaded == type && !state.isLoading) return;
+    _lastLoaded = type;
+
     state
       ..isLoading = true
       ..update();
@@ -17,9 +22,11 @@ class InfoGraft extends Graft<InfoState> {
         ? await repo.getPrivacyPolicy()
         : await repo.getTermsAndConditions();
 
-    state
-      ..isLoading = false
-      ..content = result.data
-      ..update();
+    if (!isDisposed) {
+      state
+        ..isLoading = false
+        ..content = result.data
+        ..update();
+    }
   }
 }

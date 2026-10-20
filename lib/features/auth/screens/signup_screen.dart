@@ -103,8 +103,10 @@ class SignUpScreen extends StatelessWidget {
                           color: colors.tEXT_subDark,
                           size: 20.w,
                         ),
-                        onChanged: (value) =>
-                            signupGraft.updateField(username: value),
+                        onChanged: (value) {
+                          entity.username = value;
+                          signupGraft.updateField(username: value);
+                        },
                         onSaved: (value, controller) {
                           entity.username = value;
                           signupGraft.updateField(username: value);
@@ -132,8 +134,10 @@ class SignUpScreen extends StatelessWidget {
                           color: colors.tEXT_subDark,
                           size: 20.w,
                         ),
-                        onChanged: (value) =>
-                            signupGraft.updateField(email: value),
+                        onChanged: (value) {
+                          entity.email = value;
+                          signupGraft.updateField(email: value);
+                        },
                         onSaved: (value, controller) {
                           entity.email = value;
                           signupGraft.updateField(email: value);
