@@ -34,6 +34,7 @@ class MyApp extends StatelessWidget {
     return themeGraft.slot(
       builder: (themeState) {
         return CoreKit.router(
+          title: 'Graft Template',
           config: AppCoreKitConfig(),
           navigatorKey: appRouter.navigatorKey,
           scrollBehavior: CustomScrollBehavior(),

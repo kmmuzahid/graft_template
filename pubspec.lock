@@ -739,7 +739,7 @@ packages:
       path: "../graft"
       relative: true
     source: path
-    version: "1.0.0-alpha.2"
+    version: "1.0.0-alpha.4"
   graft_lint:
     dependency: "direct dev"
     description:

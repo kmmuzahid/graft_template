@@ -10,7 +10,7 @@ export 'signup_state.dart';
 /// Managed under [AppScope.signup] with Frame-0 dry persistence.
 /// Controllers auto-dispose automatically when the screen unmounts.
 class SignUpGraft extends Graft<SignUpState> {
-  SignUpGraft() : super(SignUpState());
+  SignUpGraft() : super.dry(SignUpState.new);
 
   void updateField({
     String? username,
