@@ -14,8 +14,9 @@ dependencies:
   #   path: /Users/km/Documents/Km Muzahid/flutter_core_kit
   
   auto_route: 
-  graft:
-    path: ../graft
+  graft: ^1.0.0-alpha.4
+  # graft:
+  #   path: ../graft
   # get_it: # Replaced by Graft native DI
   # flutter_secure_storage:
   shared_preferences:
@@ -41,8 +42,9 @@ dev_dependencies:
     sdk: flutter
   flutter_lints:
   custom_lint: ^0.8.1
-  graft_lint:
-    path: ../graft/packages/graft_lint
+  graft_lint: ^1.0.0-alpha.4
+  # graft_lint:
+  #   path: ../graft/packages/graft_lint
 
   build_runner:
   auto_route_generator:
