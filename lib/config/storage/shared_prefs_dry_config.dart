@@ -4,9 +4,9 @@ import 'package:graft/graft.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 /// Production-ready SharedPreferences storage driver for Graft Frame-0 persistence.
-class SharedPrefsStateConfig implements GraftStateConfig {
+class SharedPrefsDryConfig implements GraftDryConfig {
   final SharedPreferences prefs;
-  SharedPrefsStateConfig(this.prefs);
+  SharedPrefsDryConfig(this.prefs);
 
   static const String _prefix = 'graft_';
 

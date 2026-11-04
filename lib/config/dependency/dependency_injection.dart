@@ -10,7 +10,7 @@ import 'package:graft_template/features/splash/graft/splash_graft.dart';
 import 'package:graft_template/features/tasks/graft/task_catalog_graft.dart';
 
 /// Type-safe developer-defined enum scopes for Graft flows.
-enum AppScope {
+enum AppScope with GraftScope {
   /// Scoped flow for user account registration.
   /// Transient by default: controllers auto-dispose when the route unmounts.
   signup,

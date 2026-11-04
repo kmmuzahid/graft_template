@@ -42,7 +42,6 @@ class MyApp extends StatelessWidget {
           routerConfig: appRouter.config(
             navigatorObservers: () => [
               AppRouterObserver(),
-              GraftRouteObserver(),
             ],
           ),
           theme: commonThemeData(ThemeColor.light),

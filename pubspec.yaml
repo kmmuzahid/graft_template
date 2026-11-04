@@ -14,7 +14,7 @@ dependencies:
   #   path: /Users/km/Documents/Km Muzahid/flutter_core_kit
   
   auto_route: 
-  graft: ^1.0.0-alpha.4
+  graft: ^1.0.0-alpha.10
   # graft:
   #   path: ../graft
   # get_it: # Replaced by Graft native DI
@@ -42,7 +42,7 @@ dev_dependencies:
     sdk: flutter
   flutter_lints:
   custom_lint: ^0.8.1
-  graft_lint: ^1.0.0-alpha.4
+  graft_lint: ^1.0.0-alpha.10
   # graft_lint:
   #   path: ../graft/packages/graft_lint
 

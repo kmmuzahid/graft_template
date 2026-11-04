@@ -1,17 +1,20 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:graft/graft.dart';
+import 'package:graft/testing.dart';
 import 'package:graft_template/config/dependency/dependency_injection.dart';
 import 'package:graft_template/features/auth/graft/signup_graft.dart';
 
 void main() {
   setUp(() {
-    configurePersistence(MemoryStateConfig());
-    GraftDI.reset();
-    configureDependencies();
+    GraftTesting.resetAll();
+    Graft.config(
+      dryConfig: MemoryStateConfig(),
+      di: configureDependencies,
+    );
   });
 
   tearDown(() {
-    GraftDI.reset();
+    GraftTesting.resetAll();
   });
 
   test('SignUpGraft dry state persists fields and invalidates via AppScope.signup', () {

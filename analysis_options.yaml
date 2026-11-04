@@ -8,7 +8,7 @@ analyzer:
     unrecognized_error_code: ignore
     avoid_nested_graft_slot: error
     prefer_props_in_graft_state: error
-    require_graft_route_observer: error
+    require_dry_config: error
     require_dry_schema_version: error
     require_model_factory_in_dry_state: error
     require_model_schema_version_in_dry_state: error
@@ -27,7 +27,7 @@ custom_lint:
   rules:
     - avoid_nested_graft_slot: true
     - prefer_props_in_graft_state: true
-    - require_graft_route_observer: true
+    - require_dry_config: true
     - require_dry_schema_version: true
     - require_model_factory_in_dry_state: true
     - require_model_schema_version_in_dry_state: true

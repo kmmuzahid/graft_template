@@ -33,4 +33,10 @@ class LiveCounterGraft extends Graft<LiveCounterState> {
       ..count += 1
       ..update();
   }
+
+  void reset() {
+    state
+      ..count = 0
+      ..update();
+  }
 }
